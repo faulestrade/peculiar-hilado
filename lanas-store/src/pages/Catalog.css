@@ -1,0 +1,134 @@
+.catalog {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.catalog__container {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.catalog__sidebar h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #111111;
+  margin-bottom: 1rem;
+}
+
+.catalog__cats {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.catalog__cats button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #444444;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.catalog__cats button:hover,
+.catalog__cats button.active {
+  background: #f0e4d8;
+  color: #111111;
+  font-weight: 600;
+}
+
+.catalog__cats button span {
+  font-size: 0.75rem;
+  color: #666666;
+}
+
+.catalog__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.catalog__search {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: 1px solid #e0d0c0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.catalog__search:focus {
+  border-color: #3BBFBA;
+}
+
+.catalog__count {
+  white-space: nowrap;
+  color: #666666;
+  font-size: 0.85rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.catalog__empty {
+  text-align: center;
+  color: #666666;
+  padding: 4rem 0;
+}
+
+.catalog__pagination {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.catalog__pagination button {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #e0d0c0;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #444444;
+  transition: all 0.2s;
+}
+
+.catalog__pagination button.active {
+  background: #3BBFBA;
+  border-color: #3BBFBA;
+  color: #fff;
+  font-weight: 700;
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem;
+  color: #666666;
+}
+
+@media (max-width: 768px) {
+  .catalog__container { grid-template-columns: 1fr; }
+  .catalog__sidebar { display: none; }
+}

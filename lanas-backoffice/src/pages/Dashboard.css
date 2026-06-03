@@ -1,0 +1,97 @@
+.page-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 1.75rem;
+}
+
+.page-loading {
+  padding: 4rem;
+  text-align: center;
+  color: #666666;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  border-left: 4px solid #3BBFBA;
+}
+
+.stat-card--warn { border-left-color: #d09040; }
+.stat-card--green { border-left-color: #4a8a4a; }
+.stat-card--red { border-left-color: #c04040; }
+
+.stat-card__value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 0.25rem;
+}
+
+.stat-card__label {
+  font-size: 0.8rem;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dashboard__section h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 1rem;
+}
+
+.orders-table-wrap {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.orders-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: #f5ede5;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #555555;
+}
+
+.orders-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f0e4d8;
+  color: #111111;
+}
+
+.orders-table tr:last-child td { border-bottom: none; }
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge--pending { background: #fff3cd; color: #856404; }
+.badge--confirmed { background: #d1ecf1; color: #0c5460; }
+.badge--shipped { background: #d4edda; color: #155724; }
+.badge--delivered { background: #c3e6cb; color: #155724; }
+.badge--cancelled { background: #f8d7da; color: #721c24; }

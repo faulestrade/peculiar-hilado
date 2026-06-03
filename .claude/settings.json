@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pg_isready)",
+      "Bash(brew services *)",
+      "Read(//Applications/**)",
+      "Read(//usr/local/bin/**)",
+      "Read(//opt/homebrew/bin/**)",
+      "Bash(docker info *)",
+      "Bash(docker run *)",
+      "Bash(docker exec *)",
+      "Bash(npm run *)",
+      "Bash(echo \"Backend PID: $!\")",
+      "Bash(sleep 2 && cat /tmp/lanas-backend.log)",
+      "Read(//private/tmp/**)",
+      "Bash(echo \"Store PID: $!\")",
+      "Bash(echo \"Backoffice PID: $!\")",
+      "Bash(grep -r \"#[a-fA-F0-9]\\\\{3,6\\\\}\\\\|color\\\\|primary\\\\|accent\" /Users/faustinalestrade/lanas/lanas-store/src --include=\"*.css\" -l)",
+      "Bash(grep -r \"#[a-fA-F0-9]\\\\{3,6\\\\}\\\\|color\\\\|primary\\\\|accent\" /Users/faustinalestrade/lanas/lanas-backoffice/src --include=\"*.css\" -l)",
+      "Bash(grep -rh \"#[a-fA-F0-9]\\\\{3,6\\\\}\" /Users/faustinalestrade/lanas/lanas-store/src --include=\"*.css\")",
+      "Bash(grep -oE \"#[a-fA-F0-9]{3,6}\")",
+      "Bash(grep -rh \"#[a-fA-F0-9]\\\\{3,6\\\\}\" /Users/faustinalestrade/lanas/lanas-backoffice/src --include=\"*.css\")",
+      "mcp__claude_ai_Figma__get_design_context",
+      "mcp__claude_ai_Figma__whoami",
+      "Bash(node -e \"const bcrypt = require\\('/Users/faustinalestrade/lanas/lanas-backend/node_modules/bcryptjs'\\); const hash = '\\\\$2a\\\\$10\\\\$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'; ['admin123','password','admin','1234','lanas123'].forEach\\(p => console.log\\(p, bcrypt.compareSync\\(p, hash\\)\\)\\)\")",
+      "Bash(gh auth *)"
+    ]
+  }
+}
