@@ -44,7 +44,7 @@ Esto levanta:
 `lanas-backend/.env`:
 ```
 DATABASE_URL=postgresql://postgres:lanas123@localhost:5432/lanas_db
-JWT_SECRET=dev-secret
+JWT_SECRET=
 PORT=4000
 ```
 
