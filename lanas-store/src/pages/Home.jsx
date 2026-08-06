@@ -83,17 +83,34 @@ export default function Home() {
         <div className="container">
           <div className="features">
             <div className="feature">
-              <div className="feature__icon">🧶</div>
+              <div className="feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              </div>
               <h3>Calidad premium</h3>
               <p>Seleccionamos cada hebra para garantizar la mejor experiencia.</p>
             </div>
             <div className="feature">
-              <div className="feature__icon">🎨</div>
+              <div className="feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="8.5" cy="14" r="3.5"/>
+                  <circle cx="15.5" cy="14" r="3.5"/>
+                  <circle cx="12" cy="7.5" r="3.5"/>
+                </svg>
+              </div>
               <h3>Colores únicos</h3>
               <p>Amplia paleta para que tu creatividad no tenga límites.</p>
             </div>
             <div className="feature">
-              <div className="feature__icon">📦</div>
+              <div className="feature__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="1" y="3" width="15" height="13" rx="1"/>
+                  <path d="M16 8h4l3 3v5h-7V8z"/>
+                  <circle cx="5.5" cy="18.5" r="2.5"/>
+                  <circle cx="18.5" cy="18.5" r="2.5"/>
+                </svg>
+              </div>
               <h3>Envíos a todo el país</h3>
               <p>Hacemos llegar tus materiales a cualquier punto de Argentina.</p>
             </div>
