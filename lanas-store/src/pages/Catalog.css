@@ -63,12 +63,12 @@
 
 .catalog__cats button:disabled {
   cursor: default;
-  color: var(--muted);
+  color: var(--ink);
 }
 
 .catalog__cats button:disabled:hover {
   background: transparent;
-  color: var(--muted);
+  color: var(--ink);
 }
 
 .catalog__cats button:disabled .cat-name {
