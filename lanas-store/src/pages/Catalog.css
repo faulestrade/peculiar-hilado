@@ -63,12 +63,12 @@
 
 .catalog__cats button:disabled {
   cursor: default;
-  color: var(--border);
+  color: var(--muted);
 }
 
 .catalog__cats button:disabled:hover {
   background: transparent;
-  color: var(--border);
+  color: var(--muted);
 }
 
 .catalog__cats button:disabled .cat-name {
@@ -77,7 +77,7 @@
 }
 
 .cat-empty-tag {
-  font-size: 0.52rem;
+  font-size: 0.6rem;
   background: #c8b8a8;
   color: #3a2a1a;
   padding: 0.1rem 0.3rem;
