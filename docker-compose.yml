@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:15
+    container_name: lanas-db
+    environment:
+      POSTGRES_DB: lanas_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: lanas123
+    ports:
+      - "5432:5432"
+    volumes:
+      - lanas-db-data:/var/lib/postgresql/data
+
+volumes:
+  lanas-db-data:

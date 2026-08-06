@@ -23,7 +23,27 @@
       "mcp__claude_ai_Figma__get_design_context",
       "mcp__claude_ai_Figma__whoami",
       "Bash(node -e \"const bcrypt = require\\('/Users/faustinalestrade/lanas/lanas-backend/node_modules/bcryptjs'\\); const hash = '\\\\$2a\\\\$10\\\\$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'; ['admin123','password','admin','1234','lanas123'].forEach\\(p => console.log\\(p, bcrypt.compareSync\\(p, hash\\)\\)\\)\")",
-      "Bash(gh auth *)"
+      "Bash(gh auth *)",
+      "Bash(gh repo *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(railway --version)",
+      "Bash(brew install *)",
+      "Bash(railway whoami *)",
+      "Bash(railway login *)",
+      "Bash(jobs -l)",
+      "Bash(export RAILWAY_TOKEN=34e0f074-7f08-4032-8b6f-e82d2e24a49a)",
+      "Bash(railway init *)",
+      "Bash(railway status *)",
+      "Bash(railway up *)",
+      "Bash(railway add *)",
+      "Bash(railway logs *)",
+      "Bash(openssl rand *)",
+      "Bash(railway variables *)",
+      "Bash(railway domain *)",
+      "Bash(railway deployment *)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(x['node']['status'], x['node']['id'][:8], x['node']['createdAt'][:19]\\) for x in d['edges'][:3]]\")"
     ]
   }
 }
