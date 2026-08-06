@@ -54,12 +54,12 @@ export default function Catalog() {
             {categories.map(c => (
               <li key={c.id}>
                 <button
-                  className={`${category === c.slug ? 'active' : ''} ${c.product_count === 0 ? 'empty' : ''}`}
+                  className={`${category === c.slug ? 'active' : ''} ${Number(c.product_count) === 0 ? 'empty' : ''}`}
                   onClick={() => c.product_count > 0 && setFilter('categoria', c.slug)}
-                  disabled={c.product_count === 0}
+                  disabled={Number(c.product_count) === 0}
                 >
-                  {c.name}
-                  {c.product_count === 0
+                  <span className="cat-name">{c.name}</span>
+                  {Number(c.product_count) === 0
                     ? <span className="cat-empty-tag">Sin stock</span>
                     : <span>{c.product_count}</span>}
                 </button>

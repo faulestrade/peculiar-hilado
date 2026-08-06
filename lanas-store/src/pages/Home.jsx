@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getProducts, getCategories } from '../api/products';
+
+const API_BASE = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4000';
 import ProductCard from '../components/product/ProductCard';
 import './Home.css';
 
@@ -49,7 +51,7 @@ export default function Home() {
                 >
                   <div className="category-card__img">
                     {cat.image_url
-                      ? <img src={cat.image_url} alt={cat.name} />
+                      ? <img src={`${API_BASE}${cat.image_url}`} alt={cat.name} />
                       : <div className="category-card__placeholder" />}
                   </div>
                   <span>{cat.name}</span>

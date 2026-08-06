@@ -61,20 +61,31 @@
   color: var(--border);
 }
 
-.catalog__cats button.empty,
 .catalog__cats button:disabled {
-  opacity: 0.45;
   cursor: default;
+  color: var(--border);
+}
+
+.catalog__cats button:disabled:hover {
+  background: transparent;
+  color: var(--border);
+}
+
+.catalog__cats button:disabled .cat-name {
+  text-decoration: line-through;
+  text-decoration-color: var(--border);
 }
 
 .cat-empty-tag {
-  font-size: 0.62rem !important;
-  background: var(--border);
-  color: var(--muted) !important;
-  padding: 0.1rem 0.35rem;
+  font-size: 0.52rem;
+  background: #f0e8e0;
+  color: #b09080;
+  padding: 0.1rem 0.3rem;
   border-radius: 3px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .catalog__toolbar {
