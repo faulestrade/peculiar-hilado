@@ -71,15 +71,6 @@ railway up ./lanas-store --path-as-root --service lanas-store
 railway up ./lanas-backoffice --path-as-root --service lanas-backoffice
 ```
 
-## Backoffice
-
-Acceso con usuario admin creado automáticamente al iniciar el backend.
-
-- **Email:** `admin@lanas.com`
-- **Password:** `password`
-
-> Cambiar la contraseña en producción desde la base de datos.
-
 ## Stack
 
 - **Backend:** Node.js, Express, PostgreSQL, JWT, Multer
