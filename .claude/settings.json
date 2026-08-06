@@ -51,7 +51,8 @@
       "Bash(docker exec lanas-db psql -U postgres -d lanas_db -c ' *)",
       "Bash(railway run --service lanas node -e ' *)",
       "Bash(railway run node -e ' *)",
-      "Bash(railway run *)"
+      "Bash(railway run *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
