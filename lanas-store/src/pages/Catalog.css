@@ -58,7 +58,7 @@
 
 .catalog__cats button span {
   font-size: 0.7rem;
-  color: var(--border);
+  color: var(--muted);
 }
 
 .catalog__cats button:disabled {
