@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const migrate = require('./utils/migrate');
 
 const app = express();
 
@@ -34,4 +35,6 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`Backend corriendo en http://localhost:${PORT}`));
+migrate().then(() => {
+  app.listen(PORT, () => console.log(`Backend corriendo en http://localhost:${PORT}`));
+});
