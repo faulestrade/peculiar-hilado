@@ -8,6 +8,7 @@ const links = [
   { to: '/categorias', label: 'Categorías', icon: '📂' },
   { to: '/stock', label: 'Stock', icon: '📦' },
   { to: '/pedidos', label: 'Pedidos', icon: '🛍️' },
+  { to: '/ingresos', label: 'Ingresos', icon: '💰' },
 ];
 
 export default function Sidebar() {

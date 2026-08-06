@@ -7,6 +7,7 @@ import Products from './pages/products/Products';
 import Categories from './pages/categories/Categories';
 import Stock from './pages/stock/Stock';
 import Orders from './pages/orders/Orders';
+import Revenue from './pages/revenue/Revenue';
 import './App.css';
 
 function PrivateRoute({ children }) {
@@ -26,6 +27,7 @@ function AppRoutes() {
         <Route path="categorias" element={<Categories />} />
         <Route path="stock" element={<Stock />} />
         <Route path="pedidos" element={<Orders />} />
+        <Route path="ingresos" element={<Revenue />} />
       </Route>
     </Routes>
   );

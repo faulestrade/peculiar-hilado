@@ -35,3 +35,6 @@ export const getOrders = (params) => api.get('/orders', { params }).then(r => r.
 export const getOrder = (id) => api.get(`/orders/${id}`).then(r => r.data);
 export const updateOrderStatus = (id, status) =>
   api.patch(`/orders/${id}/status`, { status }).then(r => r.data);
+
+// Revenue
+export const getRevenue = (params) => api.get('/dashboard/revenue', { params }).then(r => r.data);

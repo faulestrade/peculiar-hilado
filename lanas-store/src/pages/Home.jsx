@@ -15,7 +15,7 @@ export default function Home() {
       getCategories(),
     ]).then(([prods, cats]) => {
       setFeatured(prods.products);
-      setCategories(cats);
+      setCategories(cats.filter(c => c.product_count > 0));
     }).finally(() => setLoading(false));
   }, []);
 
