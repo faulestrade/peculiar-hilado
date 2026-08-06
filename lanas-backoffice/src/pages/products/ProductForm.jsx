@@ -27,7 +27,7 @@ export default function ProductForm({ product, onClose }) {
     featured: product?.featured || false,
     coming_soon: product?.coming_soon || false,
   });
-  const [variants, setVariants] = useState(product?.variants || []);
+  const [variants, setVariants] = useState([]);
   const [existingImages, setExistingImages] = useState(product?.images || []);
   const [newImages, setNewImages] = useState([]); // [{ file, previewUrl }]
   const [loading, setLoading] = useState(false);
@@ -115,7 +115,7 @@ export default function ProductForm({ product, onClose }) {
             </label>
             <label>
               Stock
-              <input name="stock" type="number" min="0" value={form.stock} onChange={handleChange} placeholder="0" disabled={variants.filter(v => v.color_name).length > 0} />
+              <input name="stock" type="number" min="0" value={form.stock} onChange={handleChange} placeholder="0"  />
             </label>
           </div>
           <div className="form-row">
@@ -193,23 +193,6 @@ export default function ProductForm({ product, onClose }) {
           <p className="image-hint">{existingImages.length + newImages.length}/3 fotos</p>
         </div>
 
-        <div className="form-section">
-          <div className="section-header">
-            <h2>Variantes / Colores</h2>
-            <button type="button" className="btn-add-variant" onClick={addVariant}>+ Agregar color</button>
-          </div>
-          {variants.map((v, i) => (
-            <div key={i} className="variant-row">
-              <input placeholder="Nombre del color" value={v.color_name} onChange={e => updateVariant(i, 'color_name', e.target.value)} />
-              <div className="color-pick">
-                <input type="color" value={v.color_hex || '#3BBFBA'} onChange={e => updateVariant(i, 'color_hex', e.target.value)} />
-              </div>
-              <label className="variant-label">Stock<input type="number" min="0" value={v.stock} onChange={e => updateVariant(i, 'stock', Number(e.target.value))} /></label>
-              <label className="variant-label">Precio (opc.)<input type="number" min="0" step="0.01" value={v.price_override} onChange={e => updateVariant(i, 'price_override', e.target.value)} /></label>
-              <button type="button" className="btn-remove-variant" onClick={() => removeVariant(i)}>✕</button>
-            </div>
-          ))}
-        </div>
 
         {error && <p className="form-error">{error}</p>}
 

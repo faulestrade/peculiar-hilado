@@ -55,9 +55,15 @@
 }
 
 .categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
+}
+
+.categories-grid .category-card {
+  width: 160px;
+  flex-shrink: 0;
 }
 
 .category-card {
@@ -113,6 +119,23 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1.5rem;
+}
+
+.featured-grid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1.5rem;
+}
+
+.featured-grid > * { width: 260px; }
+
+@media (max-width: 768px) {
+  .featured-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .featured-grid > * { width: 100% !important; max-width: 320px; }
 }
 
 .features {

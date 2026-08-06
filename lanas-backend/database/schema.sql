@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS products (
   needle_size VARCHAR(50),
   active BOOLEAN DEFAULT true,
   featured BOOLEAN DEFAULT false,
+  coming_soon BOOLEAN DEFAULT false,
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );

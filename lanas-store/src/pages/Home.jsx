@@ -11,7 +11,7 @@ export default function Home() {
 
   useEffect(() => {
     Promise.all([
-      getProducts({ featured: 'true', limit: 8 }),
+      getProducts({ featured: 'true', limit: 4 }),
       getCategories(),
     ]).then(([prods, cats]) => {
       setFeatured(prods.products);
@@ -36,7 +36,7 @@ export default function Home() {
       </section>
 
       {/* Categorías */}
-      {categories.length > 0 && (
+      {categories.length >= 3 && (
         <section className="section">
           <div className="container">
             <h2 className="section__title">Categorías</h2>
@@ -61,22 +61,20 @@ export default function Home() {
         </section>
       )}
 
-      {/* Destacados */}
-      <section className="section section--bg">
-        <div className="container">
-          <h2 className="section__title">Destacados</h2>
-          {loading ? (
-            <div className="loading">Cargando...</div>
-          ) : (
-            <div className="products-grid">
-              {featured.map(p => <ProductCard key={p.id} product={p} />)}
+      {/* Destacados — solo si hay al menos 2 */}
+      {!loading && featured.length >= 2 && (
+        <section className="section section--bg">
+          <div className="container">
+            <h2 className="section__title">Destacados</h2>
+            <div className="featured-grid">
+              {featured.slice(0, 4).map(p => <ProductCard key={p.id} product={p} />)}
             </div>
-          )}
-          <div className="section__cta">
-            <Link to="/catalogo" className="btn btn--outline">Ver todos los productos</Link>
+            <div className="section__cta">
+              <Link to="/catalogo" className="btn btn--outline">Ver todos los productos</Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Propuesta de valor */}
       <section className="section">

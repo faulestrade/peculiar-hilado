@@ -21,6 +21,7 @@ export default function Stock() {
     setSaving(s => ({ ...s, [variantId]: true }));
     try {
       await updateVariantStock(variantId, Number(newStock));
+      await load();
     } finally {
       setSaving(s => ({ ...s, [variantId]: false }));
     }
@@ -91,6 +92,7 @@ export default function Stock() {
 
 function StockEditor({ variantId, current, saving, onSave }) {
   const [val, setVal] = useState(current);
+  useEffect(() => { setVal(current); }, [current]);
 
   return (
     <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>

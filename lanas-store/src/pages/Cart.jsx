@@ -10,7 +10,7 @@ export default function Cart() {
   const { items, total, removeItem, updateQty, clearCart } = useCart();
   const navigate = useNavigate();
   const [step, setStep] = useState('cart'); // 'cart' | 'checkout' | 'success'
-  const [form, setForm] = useState({ name: '', email: '', phone: '', address: '', city: '', province: '', postal_code: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', address: '', city: '', postal_code: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -99,10 +99,7 @@ export default function Cart() {
                 <label>Código postal<input name="postal_code" value={form.postal_code} onChange={handleChange} /></label>
               </div>
               <label>Dirección<input name="address" value={form.address} onChange={handleChange} /></label>
-              <div className="form-row">
-                <label>Ciudad<input name="city" value={form.city} onChange={handleChange} /></label>
-                <label>Provincia<input name="province" value={form.province} onChange={handleChange} /></label>
-              </div>
+              <label>Ciudad<input name="city" value={form.city} onChange={handleChange} /></label>
               {error && <p className="form-error">{error}</p>}
             </form>
           )}

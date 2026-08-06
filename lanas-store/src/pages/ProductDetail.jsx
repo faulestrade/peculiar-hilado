@@ -109,10 +109,12 @@ export default function ProductDetail() {
             )}
           </div>
 
-          {/* Variantes / colores */}
-          {product.variants?.length > 0 && (
+          {/* Variantes / colores — solo si tienen color cargado */}
+          {product.variants?.some(v => v.color_name || v.color_hex) && (
             <div className="detail__variants">
-              <p>Color: <strong>{selectedVariant?.color_name}</strong></p>
+              {selectedVariant?.color_name && (
+                <p>Color: <strong>{selectedVariant.color_name}</strong></p>
+              )}
               <div className="detail__colors">
                 {product.variants.map(v => (
                   <button

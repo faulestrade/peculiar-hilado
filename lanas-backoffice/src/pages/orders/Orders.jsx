@@ -150,15 +150,29 @@ function OrderDetail({ order, onBack, onStatus }) {
               </tr>
             </thead>
             <tbody>
-              {(order.items || []).map(item => (
-                <tr key={item.id}>
-                  <td>{item.product_name}</td>
-                  <td>{item.variant_name}</td>
-                  <td>{item.quantity}</td>
-                  <td>${Number(item.unit_price).toLocaleString('es-AR')}</td>
-                  <td>${(item.unit_price * item.quantity).toLocaleString('es-AR')}</td>
-                </tr>
-              ))}
+              {(order.items || []).map(item => {
+                const BASE_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4000';
+                return (
+                  <tr key={item.id}>
+                    <td>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        {item.product_image && (
+                          <img
+                            src={`${BASE_URL}${item.product_image}`}
+                            alt={item.product_name}
+                            style={{ width: 48, height: 48, objectFit: 'cover', borderRadius: 6, flexShrink: 0 }}
+                          />
+                        )}
+                        <span>{item.product_name}</span>
+                      </div>
+                    </td>
+                    <td>{item.variant_name || '—'}</td>
+                    <td>{item.quantity}</td>
+                    <td>${Number(item.unit_price).toLocaleString('es-AR')}</td>
+                    <td>${(item.unit_price * item.quantity).toLocaleString('es-AR')}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
           <div style={{ textAlign: 'right', marginTop: '1rem', fontWeight: 700, color: '#b06040', fontSize: '1.1rem' }}>

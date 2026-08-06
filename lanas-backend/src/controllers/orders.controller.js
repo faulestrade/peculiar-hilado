@@ -27,7 +27,9 @@ async function create(req, res) {
     let total = 0;
     for (const item of items) {
       const { rows } = await client.query(
-        `SELECT pv.*, p.price FROM product_variants pv JOIN products p ON pv.product_id = p.id WHERE pv.id = $1`,
+        `SELECT pv.*, p.price, p.name as product_name,
+          (SELECT image_url FROM product_images WHERE product_id = p.id AND is_main = true LIMIT 1) as product_image
+         FROM product_variants pv JOIN products p ON pv.product_id = p.id WHERE pv.id = $1`,
         [item.variant_id]
       );
       const variant = rows[0];
@@ -51,7 +53,7 @@ async function create(req, res) {
       await client.query(
         `INSERT INTO order_items (order_id, variant_id, product_name, variant_name, quantity, unit_price)
          VALUES ($1,$2,$3,$4,$5,$6)`,
-        [order.id, item.variant_id, item._variant.color_name, item._variant.color_name,
+        [order.id, item.variant_id, item._variant.product_name, item._variant.color_name || null,
           item.quantity, item._unit_price]
       );
       await client.query(
@@ -107,7 +109,10 @@ async function getOne(req, res) {
     const { rows } = await pool.query(
       `SELECT o.*, cu.name as customer_name, cu.email as customer_email, cu.phone as customer_phone,
         (SELECT json_agg(json_build_object('id', oi.id, 'product_name', oi.product_name,
-          'variant_name', oi.variant_name, 'quantity', oi.quantity, 'unit_price', oi.unit_price))
+          'variant_name', oi.variant_name, 'quantity', oi.quantity, 'unit_price', oi.unit_price,
+          'product_image', (SELECT image_url FROM product_images pi
+            JOIN product_variants pv ON pv.product_id = pi.product_id
+            WHERE pv.id = oi.variant_id AND pi.is_main = true LIMIT 1)))
          FROM order_items oi WHERE oi.order_id = o.id) as items
        FROM orders o
        LEFT JOIN customers cu ON o.customer_id = cu.id

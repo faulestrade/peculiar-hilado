@@ -2,7 +2,7 @@
   "name": "lanas",
   "private": true,
   "scripts": {
-    "dev": "docker compose up -d db && concurrently --names \"backend,store,backoffice\" --prefix-colors \"cyan,green,magenta\" \"npm run dev --prefix lanas-backend\" \"npm run dev --prefix lanas-store\" \"npm run dev --prefix lanas-backoffice\"",
+    "dev": "docker compose up -d db && sleep 2 && docker exec lanas-db psql -U postgres -d lanas_db -f /dev/stdin < lanas-backend/database/schema.sql 2>/dev/null; concurrently --names \"backend,store,backoffice\" --prefix-colors \"cyan,green,magenta\" \"npm run dev --prefix lanas-backend\" \"npm run dev --prefix lanas-store\" \"npm run dev --prefix lanas-backoffice\"",
     "install:all": "npm install --prefix lanas-backend && npm install --prefix lanas-store && npm install --prefix lanas-backoffice"
   },
   "devDependencies": {

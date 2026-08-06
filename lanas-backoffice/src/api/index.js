@@ -24,6 +24,11 @@ export const getCategories = () => api.get('/categories').then(r => r.data);
 export const createCategory = (data) => api.post('/categories', data).then(r => r.data);
 export const updateCategory = (id, data) => api.put(`/categories/${id}`, data).then(r => r.data);
 export const deleteCategory = (id) => api.delete(`/categories/${id}`).then(r => r.data);
+export const uploadCategoryImage = (id, file) => {
+  const fd = new FormData();
+  fd.append('image', file);
+  return api.post(`/categories/${id}/image`, fd).then(r => r.data);
+};
 
 // Orders
 export const getOrders = (params) => api.get('/orders', { params }).then(r => r.data);

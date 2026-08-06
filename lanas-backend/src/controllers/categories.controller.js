@@ -34,6 +34,23 @@ async function create(req, res) {
   }
 }
 
+async function uploadImage(req, res) {
+  const { id } = req.params;
+  if (!req.file) return res.status(400).json({ error: 'No se subió ninguna imagen' });
+  const imageUrl = `/${process.env.UPLOAD_DIR || 'uploads'}/${req.file.filename}`;
+  try {
+    const { rows } = await pool.query(
+      'UPDATE categories SET image_url = $1 WHERE id = $2 RETURNING *',
+      [imageUrl, id]
+    );
+    if (!rows[0]) return res.status(404).json({ error: 'Categoría no encontrada' });
+    res.json(rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error al subir imagen' });
+  }
+}
+
 async function update(req, res) {
   const { id } = req.params;
   const { name, slug, description, active } = req.body;
@@ -67,4 +84,4 @@ async function remove(req, res) {
   }
 }
 
-module.exports = { getAll, create, update, remove };
+module.exports = { getAll, create, update, remove, uploadImage };
