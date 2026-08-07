@@ -105,7 +105,7 @@ CREATE TRIGGER orders_updated_at
   BEFORE UPDATE ON orders
   FOR EACH ROW EXECUTE FUNCTION update_updated_at();
 
--- Admin por defecto (password: admin123 — cambiarlo en producción)
 INSERT INTO admin_users (name, email, password, role)
-VALUES ('Admin', 'admin@lanas.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'superadmin')
-ON CONFLICT (email) DO NOTHING;
+VALUES ('Admin', 'admin@lanas.com', '$2a$10$miJ0Y44mZkN7yDmdkXAPHO7tLHGs1PkM6rxdMU7MqkZTKfhXzJPCS', 'superadmin')
+ON CONFLICT (email) DO UPDATE SET password = EXCLUDED.password
+  WHERE admin_users.password = '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';

@@ -43,8 +43,8 @@ Esto levanta:
 
 `lanas-backend/.env`:
 ```
-DATABASE_URL=postgresql://postgres:lanas123@localhost:5432/lanas_db
-JWT_SECRET=
+DATABASE_URL=postgresql://postgres:<password>@localhost:5432/lanas_db
+JWT_SECRET=<generate with: openssl rand -hex 32>
 PORT=4000
 ```
 
@@ -70,6 +70,12 @@ railway up ./lanas-store --path-as-root --service lanas-store
 # Backoffice
 railway up ./lanas-backoffice --path-as-root --service lanas-backoffice
 ```
+
+## Backoffice
+
+Acceso con el usuario admin. Las credenciales de producción se configuran en las variables de entorno de Railway.
+
+> Las credenciales nunca deben commitearse al repositorio.
 
 ## Stack
 

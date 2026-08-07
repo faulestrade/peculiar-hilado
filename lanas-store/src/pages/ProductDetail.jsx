@@ -109,8 +109,8 @@ export default function ProductDetail() {
             )}
           </div>
 
-          {/* Variantes / colores — solo si tienen color cargado */}
-          {product.variants?.some(v => v.color_name || v.color_hex) && (
+          {/* Variantes / colores — solo si tienen color hex cargado */}
+          {product.variants?.some(v => v.color_hex) && (
             <div className="detail__variants">
               {selectedVariant?.color_name && (
                 <p>Color: <strong>{selectedVariant.color_name}</strong></p>

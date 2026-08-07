@@ -52,7 +52,10 @@
       "Bash(railway run --service lanas node -e ' *)",
       "Bash(railway run node -e ' *)",
       "Bash(railway run *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git pull *)",
+      "Bash(node -e \"const bcrypt=require\\('./lanas-backend/node_modules/bcryptjs'\\); const hash=bcrypt.hashSync\\('PeculiarH1lado!', 10\\); console.log\\(hash\\);\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(k,'=',v\\) for k,v in d.items\\(\\) if 'URL' in k or 'PUBLIC' in k or 'proxy' in k.lower\\(\\)]\")"
     ]
   }
 }
