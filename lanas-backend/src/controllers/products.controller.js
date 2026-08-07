@@ -3,7 +3,8 @@ const pool = require('../config/db');
 async function getAll(req, res) {
   const { category, featured, search, page = 1, limit = 20 } = req.query;
   const offset = (page - 1) * limit;
-  const conditions = ['p.active = true'];
+  const showAll = req.admin && req.query.all === 'true';
+  const conditions = showAll ? [] : ['p.active = true'];
   const values = [];
   let i = 1;
 
@@ -214,4 +215,21 @@ async function updateVariantStock(req, res) {
   }
 }
 
-module.exports = { getAll, getOne, create, update, remove, uploadImage, deleteImage, updateVariantStock };
+async function toggleActive(req, res) {
+  const { id } = req.params;
+  const { active } = req.body;
+  if (typeof active !== 'boolean') return res.status(400).json({ error: 'active debe ser boolean' });
+  try {
+    const { rows } = await pool.query(
+      'UPDATE products SET active = $1 WHERE id = $2 RETURNING id, active',
+      [active, id]
+    );
+    if (!rows[0]) return res.status(404).json({ error: 'Producto no encontrado' });
+    res.json(rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error interno' });
+  }
+}
+
+module.exports = { getAll, getOne, create, update, remove, uploadImage, deleteImage, updateVariantStock, toggleActive };

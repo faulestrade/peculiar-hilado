@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getProducts, getProductBySlug, deleteProduct } from '../../api';
+import { getProducts, getProductBySlug, deleteProduct, toggleProductActive } from '../../api';
 import ProductForm from './ProductForm';
 import '../Dashboard.css';
 import './Products.css';
@@ -17,12 +17,17 @@ export default function Products() {
 
   const load = () => {
     setLoading(true);
-    getProducts({ search, page, limit })
+    getProducts({ search, page, limit, all: true })
       .then(d => { setProducts(d.products); setTotal(d.total); })
       .finally(() => setLoading(false));
   };
 
   useEffect(() => { load(); }, [search, page]);
+
+  const handleToggle = async (id, active) => {
+    await toggleProductActive(id, active);
+    setProducts(prev => prev.map(p => p.id === id ? { ...p, active } : p));
+  };
 
   const handleDelete = async (id) => {
     if (!confirm('¿Desactivar este producto?')) return;
@@ -66,6 +71,7 @@ export default function Products() {
               <th>Nombre</th>
               <th>Categoría</th>
               <th>Precio</th>
+              <th>Activo</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -87,6 +93,15 @@ export default function Products() {
                 </td>
                 <td>{p.category_name || '—'}</td>
                 <td>${Number(p.price).toLocaleString('es-AR')}</td>
+                <td>
+                  <button
+                    className={`toggle-active ${p.active ? 'on' : 'off'}`}
+                    onClick={() => handleToggle(p.id, !p.active)}
+                    title={p.active ? 'Desactivar' : 'Activar'}
+                  >
+                    <span className="toggle-active__knob" />
+                  </button>
+                </td>
                 <td>
                   <div className="row-actions">
                     <button className="btn-edit" onClick={() => getProductBySlug(p.slug).then(setEditing)}>Editar</button>

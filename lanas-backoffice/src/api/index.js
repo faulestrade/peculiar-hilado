@@ -18,6 +18,8 @@ export const uploadProductImage = (id, formData) =>
 export const deleteProductImage = (imageId) => api.delete(`/products/images/${imageId}`).then(r => r.data);
 export const updateVariantStock = (variantId, stock) =>
   api.patch(`/products/variants/${variantId}/stock`, { stock }).then(r => r.data);
+export const toggleProductActive = (id, active) =>
+  api.patch(`/products/${id}/active`, { active }).then(r => r.data);
 
 // Categories
 export const getCategories = () => api.get('/categories').then(r => r.data);
