@@ -9,6 +9,7 @@ const links = [
   { to: '/stock', label: 'Stock', icon: '📦' },
   { to: '/pedidos', label: 'Pedidos', icon: '🛍️' },
   { to: '/ingresos', label: 'Ingresos', icon: '💰' },
+  { to: '/usuarios', label: 'Usuarios', icon: '👤', superadminOnly: true },
 ];
 
 export default function Sidebar() {
@@ -20,7 +21,7 @@ export default function Sidebar() {
         <img src="/peculiar_hilado_logo.png" alt="Peculiar Hilado" height="52" />
       </div>
       <nav className="sidebar__nav">
-        {links.map(l => (
+        {links.filter(l => !l.superadminOnly || user?.role === 'superadmin').map(l => (
           <NavLink
             key={l.to}
             to={l.to}

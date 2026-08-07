@@ -38,3 +38,9 @@ export const updateOrderStatus = (id, status) =>
 
 // Revenue
 export const getRevenue = (params) => api.get('/dashboard/revenue', { params }).then(r => r.data);
+
+// Admin Users
+export const getAdminUsers = () => api.get('/admin-users').then(r => r.data);
+export const createAdminUser = (data) => api.post('/admin-users', data).then(r => r.data);
+export const deleteAdminUser = (id) => api.delete(`/admin-users/${id}`).then(r => r.data);
+export const changeAdminPassword = (id, password) => api.patch(`/admin-users/${id}/password`, { password }).then(r => r.data);
