@@ -106,9 +106,5 @@ CREATE TRIGGER orders_updated_at
   FOR EACH ROW EXECUTE FUNCTION update_updated_at();
 
 INSERT INTO admin_users (name, email, password, role)
-VALUES ('Admin', 'admin@lanas.com', '$2a$10$W6CC/zgJluV0OLSUTZn7Be4DBdhk3AQ4vfQqOcuCt9wYFFyACDoHS', 'superadmin')
-ON CONFLICT (email) DO UPDATE SET password = EXCLUDED.password
-  WHERE admin_users.password IN (
-    '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-    '$2a$10$miJ0Y44mZkN7yDmdkXAPHO7tLHGs1PkM6rxdMU7MqkZTKfhXzJPCS'
-  );
+VALUES ('Admin', 'admin@lanas.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'superadmin')
+ON CONFLICT DO NOTHING;
