@@ -92,10 +92,12 @@ export default function ProductForm({ product, onClose }) {
               Nombre *
               <input name="name" value={form.name} onChange={handleChange} required />
             </label>
-            <label>
-              Slug *
-              <input name="slug" value={form.slug} onChange={handleChange} required />
-            </label>
+            {!isNew && (
+              <label>
+                Slug
+                <input name="slug" value={form.slug} readOnly style={{ color: '#999', cursor: 'default', background: '#f8f5f0' }} />
+              </label>
+            )}
           </div>
           <label>
             Descripción
