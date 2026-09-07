@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
 import './ProductCard.css';
+import { imgUrl } from '../../utils/imgUrl';
 
 export default function ProductCard({ product }) {
   const price = product.price;
-  const image = product.main_image
-    ? `${import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4000'}${product.main_image}`
-    : null;
+  const image = product.main_image ? imgUrl(product.main_image) : null;
 
   const totalStock = product.variants
     ? product.variants.reduce((sum, v) => sum + (v.stock || 0), 0)
