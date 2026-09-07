@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getProducts, getCategories } from '../api/products';
+import api from '../api/axios';
 
 import ProductCard from '../components/product/ProductCard';
 import { imgUrl } from '../utils/imgUrl';
@@ -9,15 +10,18 @@ import './Home.css';
 export default function Home() {
   const [featured, setFeatured] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [banner, setBanner] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     Promise.all([
       getProducts({ featured: 'true', limit: 4 }),
       getCategories(),
-    ]).then(([prods, cats]) => {
+      api.get('/banners/active').then(r => r.data).catch(() => null),
+    ]).then(([prods, cats, ban]) => {
       setFeatured(prods.products);
       setCategories(cats.filter(c => c.product_count > 0));
+      setBanner(ban);
     }).finally(() => setLoading(false));
   }, []);
 
@@ -78,6 +82,28 @@ export default function Home() {
         </section>
       )}
 
+      {/* Banner promocional */}
+      {banner && (
+        <section className="promo-banner">
+          <div className="container promo-banner__inner">
+            {banner.product_image && (
+              <div className="promo-banner__img">
+                <img src={imgUrl(banner.product_image)} alt={banner.product_name} />
+              </div>
+            )}
+            <div className="promo-banner__text">
+              {banner.title && <h2 className="promo-banner__title">{banner.title}</h2>}
+              {banner.subtitle && <p className="promo-banner__subtitle">{banner.subtitle}</p>}
+              {banner.product_slug && (
+                <Link to={`/producto/${banner.product_slug}`} className="btn btn--primary">
+                  {banner.cta_text || 'Ver producto'}
+                </Link>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Propuesta de valor */}
       <section className="section">
         <div className="container">
@@ -112,7 +138,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3>Envíos a todo el país</h3>
-              <p>Hacemos llegar tus materiales a cualquier punto de Argentina.</p>
+              <p>Hacemos llegar tus materiales a cualquier punto de Uruguay. Para envíos al exterior, contáctanos antes de comprar.</p>
             </div>
           </div>
         </div>

@@ -107,6 +107,16 @@ CREATE TRIGGER orders_updated_at
 
 ALTER TABLE products ADD COLUMN IF NOT EXISTS deleted BOOLEAN DEFAULT false;
 
+CREATE TABLE IF NOT EXISTS banners (
+  id SERIAL PRIMARY KEY,
+  product_id INTEGER REFERENCES products(id) ON DELETE SET NULL,
+  title VARCHAR(200),
+  subtitle VARCHAR(300),
+  cta_text VARCHAR(100) DEFAULT 'Ver producto',
+  active BOOLEAN DEFAULT false,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
 INSERT INTO admin_users (name, email, password, role)
 VALUES ('Admin', 'admin@lanas.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'superadmin')
 ON CONFLICT DO NOTHING;

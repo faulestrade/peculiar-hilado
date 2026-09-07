@@ -9,6 +9,7 @@ const links = [
   { to: '/stock', label: 'Stock', icon: '📦' },
   { to: '/pedidos', label: 'Pedidos', icon: '🛍️' },
   { to: '/ingresos', label: 'Ingresos', icon: '💰' },
+  { to: '/banner', label: 'Banner', icon: '🖼️' },
   { to: '/usuarios', label: 'Usuarios', icon: '👤', superadminOnly: true },
 ];
 

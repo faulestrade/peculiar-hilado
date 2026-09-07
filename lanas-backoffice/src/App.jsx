@@ -9,6 +9,7 @@ import Stock from './pages/stock/Stock';
 import Orders from './pages/orders/Orders';
 import Revenue from './pages/revenue/Revenue';
 import Users from './pages/users/Users';
+import Banner from './pages/banner/Banner';
 import './App.css';
 
 function PrivateRoute({ children }) {
@@ -30,6 +31,7 @@ function AppRoutes() {
         <Route path="pedidos" element={<Orders />} />
         <Route path="ingresos" element={<Revenue />} />
         <Route path="usuarios" element={<Users />} />
+        <Route path="banner" element={<Banner />} />
       </Route>
     </Routes>
   );
