@@ -19,7 +19,6 @@ export default function Footer() {
         </div>
         <div className="footer__col">
           <h4>Contacto</h4>
-          <p>hola@peculiarhilado.com</p>
           <p>Uruguay</p>
           <p><a href="https://instagram.com/peculiarhilado" target="_blank" rel="noopener noreferrer">@peculiarhilado</a></p>
         </div>
