@@ -5,7 +5,7 @@ async function getAll(req, res) {
   const { category, featured, search, page = 1, limit = 20 } = req.query;
   const offset = (page - 1) * limit;
   const showAll = req.admin && req.query.all === 'true';
-  const conditions = showAll ? [] : ['p.active = true'];
+  const conditions = showAll ? ['p.deleted IS NOT TRUE'] : ['p.active = true', 'p.deleted IS NOT TRUE'];
   const values = [];
   let i = 1;
 
@@ -157,8 +157,8 @@ async function update(req, res) {
 async function remove(req, res) {
   const { id } = req.params;
   try {
-    await pool.query('UPDATE products SET active = false WHERE id = $1', [id]);
-    res.json({ message: 'Producto desactivado' });
+    await pool.query('UPDATE products SET deleted = true, active = false WHERE id = $1', [id]);
+    res.json({ message: 'Producto eliminado' });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Error al eliminar producto' });
