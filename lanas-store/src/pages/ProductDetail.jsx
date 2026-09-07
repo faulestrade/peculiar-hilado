@@ -3,8 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { getProduct } from '../api/products';
 import { useCart } from '../context/CartContext';
 import './ProductDetail.css';
-
-const BASE_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4000';
+import { imgUrl } from '../utils/imgUrl';
 
 export default function ProductDetail() {
   const { slug } = useParams();
@@ -55,7 +54,7 @@ export default function ProductDetail() {
         <div className="detail__gallery">
           <div className="detail__main-img">
             {images[activeImg]
-              ? <img src={`${BASE_URL}${images[activeImg].image_url}`} alt={product.name} />
+              ? <img src={imgUrl(images[activeImg].image_url)} alt={product.name} />
               : <div className="detail__placeholder" />}
           </div>
           {images.length > 1 && (
@@ -66,7 +65,7 @@ export default function ProductDetail() {
                   className={`detail__thumb ${activeImg === i ? 'active' : ''}`}
                   onClick={() => setActiveImg(i)}
                 >
-                  <img src={`${BASE_URL}${img.image_url}`} alt="" />
+                  <img src={imgUrl(img.image_url)} alt="" />
                 </button>
               ))}
             </div>

@@ -3,8 +3,7 @@ import { getProducts, getProductBySlug, deleteProduct, toggleProductActive } fro
 import ProductForm from './ProductForm';
 import '../Dashboard.css';
 import './Products.css';
-
-const BASE_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4000';
+import { imgUrl } from '../../utils/imgUrl';
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -83,7 +82,7 @@ export default function Products() {
                 <td>
                   <div className="product-thumb">
                     {p.main_image
-                      ? <img src={`${BASE_URL}${p.main_image}`} alt={p.name} />
+                      ? <img src={imgUrl(p.main_image)} alt={p.name} />
                       : <div className="product-thumb__placeholder" />}
                   </div>
                 </td>

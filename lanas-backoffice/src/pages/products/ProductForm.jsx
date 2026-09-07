@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { createProduct, updateProduct, getCategories, uploadProductImage, deleteProductImage } from '../../api';
 import './ProductForm.css';
 
-const BASE_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4000';
+import { imgUrl } from '../../utils/imgUrl';
 
 function slugify(str) {
   return str.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -151,7 +151,7 @@ export default function ProductForm({ product, onClose }) {
           <div className="images-grid">
             {existingImages.map(img => (
               <div key={img.id} className="image-thumb">
-                <img src={`${BASE_URL}${img.image_url}`} alt="" />
+                <img src={imgUrl(img.image_url)} alt="" />
                 {img.is_main && <span className="image-badge">Principal</span>}
                 <button
                   type="button"

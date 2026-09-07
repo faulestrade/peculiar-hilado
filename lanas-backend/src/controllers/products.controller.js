@@ -1,4 +1,5 @@
 const pool = require('../config/db');
+const cloudinary = require('../config/cloudinary');
 
 async function getAll(req, res) {
   const { category, featured, search, page = 1, limit = 20 } = req.query;
@@ -169,14 +170,20 @@ async function uploadImage(req, res) {
   const { is_main } = req.body;
   if (!req.file) return res.status(400).json({ error: 'No se recibió ninguna imagen' });
 
-  const imageUrl = `/uploads/${req.file.filename}`;
   try {
+    const result = await new Promise((resolve, reject) => {
+      cloudinary.uploader.upload_stream(
+        { folder: 'lanas/products' },
+        (err, result) => err ? reject(err) : resolve(result)
+      ).end(req.file.buffer);
+    });
+
     if (is_main === 'true') {
       await pool.query('UPDATE product_images SET is_main = false WHERE product_id = $1', [id]);
     }
     const { rows } = await pool.query(
       'INSERT INTO product_images (product_id, image_url, is_main) VALUES ($1,$2,$3) RETURNING *',
-      [id, imageUrl, is_main === 'true']
+      [id, result.secure_url, is_main === 'true']
     );
     res.status(201).json(rows[0]);
   } catch (err) {
@@ -190,6 +197,11 @@ async function deleteImage(req, res) {
   try {
     const { rows } = await pool.query('DELETE FROM product_images WHERE id = $1 RETURNING *', [imageId]);
     if (!rows[0]) return res.status(404).json({ error: 'Imagen no encontrada' });
+    const url = rows[0].image_url;
+    if (url && url.includes('cloudinary')) {
+      const publicId = url.split('/').slice(-2).join('/').replace(/\.[^.]+$/, '');
+      await cloudinary.uploader.destroy(publicId).catch(() => {});
+    }
     res.json({ message: 'Imagen eliminada' });
   } catch (err) {
     console.error(err);

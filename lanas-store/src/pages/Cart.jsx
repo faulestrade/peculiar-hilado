@@ -3,8 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { createOrder } from '../api/orders';
 import './Cart.css';
-
-const BASE_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4000';
+import { imgUrl } from '../utils/imgUrl';
 
 export default function Cart() {
   const { items, total, removeItem, updateQty, clearCart } = useCart();
@@ -69,7 +68,7 @@ export default function Cart() {
                 <div key={item.variantId} className="cart-item">
                   <div className="cart-item__img">
                     {item.image
-                      ? <img src={`${BASE_URL}${item.image}`} alt={item.productName} />
+                      ? <img src={imgUrl(item.image)} alt={item.productName} />
                       : <div className="cart-item__placeholder" />}
                   </div>
                   <div className="cart-item__info">

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { getCategories, createCategory, updateCategory, deleteCategory, uploadCategoryImage } from '../../api';
 import '../products/Products.css';
 
-const BASE_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4000';
+import { imgUrl } from '../../utils/imgUrl';
 
 function slugify(str) {
   return str.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -62,7 +62,7 @@ export default function Categories() {
     setEditing(cat);
     setForm({ name: cat.name, slug: cat.slug, description: cat.description || '' });
     setImageFile(null);
-    setImagePreview(cat.image_url ? `${BASE_URL}${cat.image_url}` : null);
+    setImagePreview(cat.image_url ? imgUrl(cat.image_url) : null);
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 

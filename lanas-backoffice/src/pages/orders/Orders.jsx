@@ -3,6 +3,7 @@ import { getOrders, getOrder, updateOrderStatus } from '../../api';
 import '../products/Products.css';
 import '../Dashboard.css';
 import './Orders.css';
+import { imgUrl } from '../../utils/imgUrl';
 
 const STATUSES = ['pending', 'confirmed', 'shipped', 'delivered', 'cancelled'];
 const STATUS_LABEL = { pending: 'Pendiente', confirmed: 'Confirmado', shipped: 'Enviado', delivered: 'Entregado', cancelled: 'Cancelado' };
@@ -151,14 +152,13 @@ function OrderDetail({ order, onBack, onStatus }) {
             </thead>
             <tbody>
               {(order.items || []).map(item => {
-                const BASE_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:4000';
                 return (
                   <tr key={item.id}>
                     <td>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                         {item.product_image && (
                           <img
-                            src={`${BASE_URL}${item.product_image}`}
+                            src={imgUrl(item.product_image)}
                             alt={item.product_name}
                             style={{ width: 48, height: 48, objectFit: 'cover', borderRadius: 6, flexShrink: 0 }}
                           />

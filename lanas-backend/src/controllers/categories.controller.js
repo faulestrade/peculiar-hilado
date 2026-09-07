@@ -1,4 +1,5 @@
 const pool = require('../config/db');
+const cloudinary = require('../config/cloudinary');
 
 async function getAll(req, res) {
   try {
@@ -37,11 +38,16 @@ async function create(req, res) {
 async function uploadImage(req, res) {
   const { id } = req.params;
   if (!req.file) return res.status(400).json({ error: 'No se subió ninguna imagen' });
-  const imageUrl = `/${process.env.UPLOAD_DIR || 'uploads'}/${req.file.filename}`;
   try {
+    const result = await new Promise((resolve, reject) => {
+      cloudinary.uploader.upload_stream(
+        { folder: 'lanas/categories' },
+        (err, result) => err ? reject(err) : resolve(result)
+      ).end(req.file.buffer);
+    });
     const { rows } = await pool.query(
       'UPDATE categories SET image_url = $1 WHERE id = $2 RETURNING *',
-      [imageUrl, id]
+      [result.secure_url, id]
     );
     if (!rows[0]) return res.status(404).json({ error: 'Categoría no encontrada' });
     res.json(rows[0]);
