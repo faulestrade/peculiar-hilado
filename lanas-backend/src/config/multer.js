@@ -9,4 +9,4 @@ const fileFilter = (req, file, cb) => {
   else cb(new Error('Solo se permiten imágenes (jpeg, jpg, png, webp)'));
 };
 
-module.exports = multer({ storage: multer.memoryStorage(), fileFilter, limits: { fileSize: 5 * 1024 * 1024 } });
+module.exports = multer({ storage: multer.memoryStorage(), fileFilter, limits: { fileSize: 500 * 1024 } });
