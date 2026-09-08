@@ -114,8 +114,8 @@ export default function Home() {
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                 </svg>
               </div>
-              <h3>Calidad premium</h3>
-              <p>Seleccionamos cada hebra para garantizar la mejor experiencia.</p>
+              <h3>Merino superwash</h3>
+              <p>Trabajamos con lana Merino de 19 micras, seleccionada e hilada en Uruguay.</p>
             </div>
             <div className="feature">
               <div className="feature__icon">
@@ -125,8 +125,8 @@ export default function Home() {
                   <circle cx="12" cy="7.5" r="3.5"/>
                 </svg>
               </div>
-              <h3>Colores únicos</h3>
-              <p>Amplia paleta para que tu creatividad no tenga límites.</p>
+              <h3>Teñido a mano</h3>
+              <p>Cada madeja en pequeños lotes, con colores de profundidad y personalidad propias.</p>
             </div>
             <div className="feature">
               <div className="feature__icon">
