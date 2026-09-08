@@ -253,7 +253,7 @@
 /* Banner promocional */
 /* wrapper que da el padding para que el radius se vea */
 .promo-banner-wrap {
-  padding: 0 1.5rem;
+  padding: 1.5rem;
 }
 
 .promo-banner {
