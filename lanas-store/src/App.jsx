@@ -20,7 +20,7 @@ export default function App() {
             <Route path="/catalogo" element={<Catalog />} />
             <Route path="/producto/:slug" element={<ProductDetail />} />
             <Route path="/carrito" element={<Cart />} />
-            <Route path="/nosotras" element={<Nosotras />} />
+            <Route path="/sobrepeculiarhilado" element={<Nosotras />} />
           </Routes>
           <Footer />
         </div>
