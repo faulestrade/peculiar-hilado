@@ -11,6 +11,9 @@
   align-items: center;
 }
 
+.nosotras__hero-inner > .anim { display: flex; flex-direction: column; justify-content: center; }
+.nosotras__hero-inner > .anim:last-child { align-items: stretch; }
+
 .nosotras__hero-img {
   width: 100%;
   aspect-ratio: 1 / 1;

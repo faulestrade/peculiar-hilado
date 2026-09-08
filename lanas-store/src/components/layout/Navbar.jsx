@@ -1,12 +1,20 @@
+import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import './Navbar.css';
 
 export default function Navbar() {
   const { count } = useCart();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <header className="navbar">
+    <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
       <div className="navbar__container">
         <Link to="/" className="navbar__logo">
           <img src="/peculiar_hilado_logo.png" alt="Peculiar Hilado" height="52" />

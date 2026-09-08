@@ -121,6 +121,15 @@
   flex-shrink: 0;
 }
 
+.categories-grid > .anim {
+  width: 148px;
+  flex-shrink: 0;
+}
+
+.categories-grid > .anim .category-card {
+  width: 100%;
+}
+
 .category-card {
   display: flex;
   flex-direction: column;
@@ -187,6 +196,8 @@
 }
 
 .featured-grid > * { width: 260px; }
+.featured-grid > .anim { display: flex; }
+.featured-grid > .anim > * { width: 100%; }
 
 @media (max-width: 768px) {
   .featured-grid {
@@ -203,6 +214,9 @@
   gap: 2.5rem;
   text-align: center;
 }
+
+.features > .anim { display: flex; }
+.features > .anim > .feature { width: 100%; }
 
 .feature__icon {
   width: 40px;
