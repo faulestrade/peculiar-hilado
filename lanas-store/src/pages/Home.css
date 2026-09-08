@@ -251,11 +251,17 @@
 }
 
 /* Banner promocional */
+/* wrapper que da el padding para que el radius se vea */
+.promo-banner-wrap {
+  padding: 0 1.5rem;
+}
+
 .promo-banner {
   background: var(--teal-faint);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 3rem 1.5rem;
+  border: 1px solid rgba(43, 191, 186, 0.18);
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 3rem 2rem;
 }
 
 /* Banner con imagen propia: full-width, relación 3:1 */
@@ -266,6 +272,7 @@
   overflow: hidden;
   min-height: 180px;
   max-height: 420px;
+  border-radius: 14px;
 }
 
 .promo-banner__full img {
@@ -291,7 +298,8 @@
 .promo-banner__overlay .promo-banner__subtitle { color: rgba(255,255,255,0.85); }
 
 @media (max-width: 600px) {
-  .promo-banner__full { aspect-ratio: 2 / 1; }
+  .promo-banner-wrap { padding: 0 1rem; }
+  .promo-banner__full { aspect-ratio: 2 / 1; border-radius: 10px; }
   .promo-banner__overlay { padding: 1.25rem 1.5rem; }
 }
 

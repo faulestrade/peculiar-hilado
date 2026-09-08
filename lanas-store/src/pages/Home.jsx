@@ -82,32 +82,11 @@ export default function Home() {
         </section>
       )}
 
-      {/* Destacados — solo si hay al menos 2 */}
-      {!loading && featured.length >= 2 && (
-        <section className="section section--bg">
-          <div className="container">
-            <Anim><h2 className="section__title">Destacados</h2></Anim>
-            <div className="featured-grid">
-              {featured.slice(0, 4).map((p, i) => (
-                <Anim key={p.id} delay={i * 70}>
-                  <ProductCard product={p} />
-                </Anim>
-              ))}
-            </div>
-            <Anim>
-              <div className="section__cta">
-                <Link to="/catalogo" className="btn btn--outline">Ver todos los productos</Link>
-              </div>
-            </Anim>
-          </div>
-        </section>
-      )}
-
       {/* Banner promocional */}
       {banner && (
         <Anim>
+          <div className="promo-banner-wrap">
           <section className="promo-banner">
-            {/* Si tiene imagen propia, la muestra full-width como fondo/imagen */}
             {(banner.banner_image_url || banner.image_url)
               ? (
                 <div className="promo-banner__full">
@@ -145,7 +124,29 @@ export default function Home() {
               )
             }
           </section>
+          </div>
         </Anim>
+      )}
+
+      {/* Destacados — solo si hay al menos 2 */}
+      {!loading && featured.length >= 2 && (
+        <section className="section section--bg">
+          <div className="container">
+            <Anim><h2 className="section__title">Destacados</h2></Anim>
+            <div className="featured-grid">
+              {featured.slice(0, 4).map((p, i) => (
+                <Anim key={p.id} delay={i * 70}>
+                  <ProductCard product={p} />
+                </Anim>
+              ))}
+            </div>
+            <Anim>
+              <div className="section__cta">
+                <Link to="/catalogo" className="btn btn--outline">Ver todos los productos</Link>
+              </div>
+            </Anim>
+          </div>
+        </section>
       )}
 
       {/* Propuesta de valor */}
