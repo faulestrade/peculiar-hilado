@@ -86,7 +86,7 @@ export default function Home() {
       {banner && (
         <Anim>
           <div className="promo-banner-wrap">
-          <section className="promo-banner">
+          <section className={`promo-banner${(banner.banner_image_url || banner.image_url) ? ' promo-banner--img' : ''}`}>
             {(banner.banner_image_url || banner.image_url)
               ? (
                 <div className="promo-banner__full">
