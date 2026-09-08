@@ -24,7 +24,7 @@ export default function Nosotras() {
         <div className="container nosotras__hero-inner">
           <Anim>
             <div className="nosotras__hero-text">
-              <p className="nosotras__eyebrow">Conócenos</p>
+              <p className="nosotras__eyebrow">Quiénes somos</p>
               <h1 className="nosotras__headline">Hilados con identidad,<br />colores para crear</h1>
               <p className="nosotras__intro">
                 En Peculiar Hilado creamos hilados teñidos a mano, explorando el color y las posibilidades
