@@ -7,14 +7,22 @@ export default function Nosotras() {
 
       {/* Hero */}
       <section className="nosotras__hero">
-        <div className="container">
-          <p className="nosotras__eyebrow">Sobre nosotras</p>
-          <h1 className="nosotras__headline">Hilados con identidad,<br />colores para crear</h1>
-          <p className="nosotras__intro">
-            En Peculiar Hilado creamos hilados teñidos a mano, explorando el color y las posibilidades
-            que ofrece la lana Merino. Trabajamos en pequeños lotes, con materias primas cuidadosamente
-            elegidas y una búsqueda constante de nuevas combinaciones.
-          </p>
+        <div className="container nosotras__hero-inner">
+          <div className="nosotras__hero-text">
+            <p className="nosotras__eyebrow">Sobre nosotras</p>
+            <h1 className="nosotras__headline">Hilados con identidad,<br />colores para crear</h1>
+            <p className="nosotras__intro">
+              En Peculiar Hilado creamos hilados teñidos a mano, explorando el color y las posibilidades
+              que ofrece la lana Merino. Trabajamos en pequeños lotes, con materias primas cuidadosamente
+              elegidas y una búsqueda constante de nuevas combinaciones.
+            </p>
+          </div>
+          <div className="nosotras__hero-img">
+            <img
+              src="https://res.cloudinary.com/dkxutp1x/image/upload/w_800,h_800,c_fill,g_south/v1788874854/Screenshot_2026-09-08_at_10.40.37_AM.png"
+              alt="Paula en su stand de Peculiar Hilado"
+            />
+          </div>
         </div>
       </section>
 

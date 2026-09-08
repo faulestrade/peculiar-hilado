@@ -1,8 +1,28 @@
 .nosotras__hero {
   padding: 5rem 1.5rem 4rem;
-  text-align: center;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
+}
+
+.nosotras__hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 4rem;
+  align-items: center;
+}
+
+.nosotras__hero-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.nosotras__hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .nosotras__eyebrow {
@@ -16,7 +36,7 @@
 }
 
 .nosotras__headline {
-  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 600;
   color: var(--ink);
   line-height: 1.15;
@@ -24,11 +44,9 @@
 }
 
 .nosotras__intro {
-  max-width: 620px;
-  margin: 0 auto;
   color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
 /* Secciones */
@@ -84,6 +102,20 @@
   margin-bottom: 0;
 }
 
+@media (max-width: 768px) {
+  .nosotras__hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .nosotras__hero-img {
+    order: -1;
+    max-width: 320px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
 @media (max-width: 640px) {
   .nosotras__two-col {
     grid-template-columns: 1fr;
@@ -91,11 +123,6 @@
   }
 
   .nosotras__hero {
-    padding: 3.5rem 1.25rem 3rem;
-    text-align: left;
-  }
-
-  .nosotras__intro {
-    text-align: left;
+    padding: 3rem 1.25rem 2.5rem;
   }
 }
