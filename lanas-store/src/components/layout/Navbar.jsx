@@ -22,7 +22,7 @@ export default function Navbar() {
         <nav className="navbar__links">
           <NavLink to="/" end>Inicio</NavLink>
           <NavLink to="/catalogo">Catálogo</NavLink>
-          <NavLink to="/nosotras">Nosotras</NavLink>
+          <NavLink to="/nosotras">Conocenos</NavLink>
         </nav>
         <Link to="/carrito" className="navbar__cart">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
