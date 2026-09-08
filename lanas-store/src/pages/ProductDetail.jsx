@@ -1,23 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getProduct } from '../api/products';
 import { useCart } from '../context/CartContext';
 import './ProductDetail.css';
 import { imgUrl } from '../utils/imgUrl';
-
-function useFadeIn() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const ob = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { el.classList.add('visible'); ob.unobserve(el); }
-    }, { threshold: 0.08 });
-    ob.observe(el);
-    return () => ob.disconnect();
-  }, []);
-  return ref;
-}
 
 export default function ProductDetail() {
   const { slug } = useParams();
@@ -38,9 +24,6 @@ export default function ProductDetail() {
       })
       .finally(() => setLoading(false));
   }, [slug]);
-
-  const galleryRef = useFadeIn();
-  const infoRef = useFadeIn();
 
   if (loading) return <div className="loading" style={{ padding: '6rem' }}>Cargando...</div>;
   if (!product) return <div className="loading" style={{ padding: '6rem' }}>Producto no encontrado</div>;
@@ -68,7 +51,7 @@ export default function ProductDetail() {
     <main className="detail page-enter">
       <div className="detail__container">
         {/* Imágenes */}
-        <div className="detail__gallery anim" ref={galleryRef}>
+        <div className="detail__gallery">
           <div className="detail__main-img">
             {images[activeImg]
               ? <img src={imgUrl(images[activeImg].image_url)} alt={product.name} />
@@ -90,7 +73,7 @@ export default function ProductDetail() {
         </div>
 
         {/* Info */}
-        <div className="detail__info anim" ref={infoRef} style={{ '--anim-delay': '100ms' }}>
+        <div className="detail__info">
           {product.category_name && (
             <Link to={`/catalogo?categoria=${product.category_slug}`} className="detail__breadcrumb">
               {product.category_name}

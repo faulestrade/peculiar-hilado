@@ -11,7 +11,21 @@
   align-items: start;
 }
 
-.detail__gallery { display: flex; flex-direction: column; gap: 1rem; }
+@keyframes detailIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.detail__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: detailIn 0.6s ease both;
+}
+
+.detail__info {
+  animation: detailIn 0.6s 0.12s ease both;
+}
 
 .detail__main-img {
   aspect-ratio: 1;
