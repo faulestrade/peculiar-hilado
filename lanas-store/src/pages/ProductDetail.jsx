@@ -39,6 +39,9 @@ export default function ProductDetail() {
       .finally(() => setLoading(false));
   }, [slug]);
 
+  const galleryRef = useFadeIn();
+  const infoRef = useFadeIn();
+
   if (loading) return <div className="loading" style={{ padding: '6rem' }}>Cargando...</div>;
   if (!product) return <div className="loading" style={{ padding: '6rem' }}>Producto no encontrado</div>;
 
@@ -60,9 +63,6 @@ export default function ProductDetail() {
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };
-
-  const galleryRef = useFadeIn();
-  const infoRef = useFadeIn();
 
   return (
     <main className="detail page-enter">
