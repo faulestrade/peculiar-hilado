@@ -38,7 +38,7 @@ export default function Catalog() {
   const totalPages = Math.ceil(total / limit);
 
   return (
-    <main className="catalog">
+    <main className="catalog page-enter">
       <div className="catalog__container">
         <aside className="catalog__sidebar">
           <h2>Categorías</h2>
