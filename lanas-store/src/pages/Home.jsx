@@ -107,22 +107,43 @@ export default function Home() {
       {banner && (
         <Anim>
           <section className="promo-banner">
-            <div className="container promo-banner__inner">
-              {banner.product_image && (
-                <div className="promo-banner__img">
-                  <img src={imgUrl(banner.product_image)} alt={banner.product_name} />
+            {/* Si tiene imagen propia, la muestra full-width como fondo/imagen */}
+            {(banner.banner_image_url || banner.image_url)
+              ? (
+                <div className="promo-banner__full">
+                  <img src={imgUrl(banner.banner_image_url || banner.image_url)} alt={banner.title || ''} />
+                  {(banner.title || banner.subtitle || banner.product_slug) && (
+                    <div className="promo-banner__overlay">
+                      {banner.title && <h2 className="promo-banner__title">{banner.title}</h2>}
+                      {banner.subtitle && <p className="promo-banner__subtitle">{banner.subtitle}</p>}
+                      {banner.product_slug && (
+                        <Link to={`/producto/${banner.product_slug}`} className="btn btn--primary">
+                          {banner.cta_text || 'Ver producto'}
+                        </Link>
+                      )}
+                    </div>
+                  )}
                 </div>
-              )}
-              <div className="promo-banner__text">
-                {banner.title && <h2 className="promo-banner__title">{banner.title}</h2>}
-                {banner.subtitle && <p className="promo-banner__subtitle">{banner.subtitle}</p>}
-                {banner.product_slug && (
-                  <Link to={`/producto/${banner.product_slug}`} className="btn btn--primary">
-                    {banner.cta_text || 'Ver producto'}
-                  </Link>
-                )}
-              </div>
-            </div>
+              )
+              : (
+                <div className="container promo-banner__inner">
+                  {banner.product_image && (
+                    <div className="promo-banner__img">
+                      <img src={imgUrl(banner.product_image)} alt={banner.product_name} />
+                    </div>
+                  )}
+                  <div className="promo-banner__text">
+                    {banner.title && <h2 className="promo-banner__title">{banner.title}</h2>}
+                    {banner.subtitle && <p className="promo-banner__subtitle">{banner.subtitle}</p>}
+                    {banner.product_slug && (
+                      <Link to={`/producto/${banner.product_slug}`} className="btn btn--primary">
+                        {banner.cta_text || 'Ver producto'}
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              )
+            }
           </section>
         </Anim>
       )}

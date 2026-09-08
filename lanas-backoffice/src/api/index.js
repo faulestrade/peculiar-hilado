@@ -50,5 +50,10 @@ export const changeAdminPassword = (id, password) => api.patch(`/admin-users/${i
 // Banners
 export const getBanners = () => api.get('/banners').then(r => r.data);
 export const saveBanner = (data) => api.post('/banners', data).then(r => r.data);
+export const uploadBannerImage = (id, file) => {
+  const fd = new FormData();
+  fd.append('image', file);
+  return api.post(`/banners/${id}/image`, fd).then(r => r.data);
+};
 export const toggleBannerActive = (id, active) => api.patch(`/banners/${id}/active`, { active }).then(r => r.data);
 export const deleteBanner = (id) => api.delete(`/banners/${id}`).then(r => r.data);

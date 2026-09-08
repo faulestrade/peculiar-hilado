@@ -117,6 +117,8 @@ CREATE TABLE IF NOT EXISTS banners (
   created_at TIMESTAMP DEFAULT NOW()
 );
 
+ALTER TABLE banners ADD COLUMN IF NOT EXISTS image_url VARCHAR(500);
+
 INSERT INTO admin_users (name, email, password, role)
 VALUES ('Admin', 'admin@lanas.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'superadmin')
 ON CONFLICT DO NOTHING;
